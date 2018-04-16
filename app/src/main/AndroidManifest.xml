@@ -17,9 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".CheckActivity" />
-        <activity android:name=".SplashActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".CheckActivity2" />
+        <activity android:name=".EndActivity"></activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

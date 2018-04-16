@@ -3,7 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="20dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
     android:layout_marginTop="20dp">
 
 
@@ -12,23 +13,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="TestTitle From Server"
-        android:textSize="20dp"
+        android:text="SERVICE BRAKE PEDAL"
+        android:textSize="25dp"
         android:textStyle="bold"
         android:layout_marginBottom="40dp"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="- Method of Testing"
+        android:textSize="20dp"
         android:textStyle="bold"/>
     <TextView
         android:id="@+id/Method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:text="1. Hello This is Yujin Oh.\n2. Nice to meet you\n3. Hello Hello Hello"
-        android:maxLines="2"/>
+        android:text="1. Check the anti-slip provisions on the pedal pad.\n2. Examine the condition of the pedal.\n3. Check the fixing of the pedal pad to the pedal and the fixing of the pedal to the operating lever.\n
+4. Move the pedal from side to side and examine the condition of the pedal pivot bearing/bush.\n5. Depress the pedal to check for fouling on parts of the vehicle."
+        android:maxLines="3"/>
 
     <Button
         android:id="@+id/ReadMoreBtn1"
@@ -44,14 +54,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="- Notes"
+        android:textSize="20dp"
         android:textStyle="bold"/>
     <TextView
         android:id="@+id/Notes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:text="1. Hello This is Yujin Oh.\n2. Nice to meet you\n3. Hello Hello Hello"
-        android:maxLines="2"/>
+        android:text="1. Before carrying out this inspection, check the road wheels.\n2. Brake pedals should not be rejected for not having a pedal rubber if they were not designed to have one."
+        android:maxLines="3"/>
 
     <Button
         android:id="@+id/ReadMoreBtn2"
@@ -62,51 +73,29 @@
         android:text="READ MORE" />
 
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="- Reasons for Failure"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="going to add check_listview here"
-        android:layout_marginBottom="30dp"/>
-
-    !~going to add listview here
-    !~item would be checkbox,textview1,textview2
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="- Comment"
-        android:textStyle="bold"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
-        android:maxLines="3"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="30dp">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Previous"/>
+            android:text="Previous"
+            android:onClick="PreviousClicked"/>
+        !~have to add Previous1Clicked.
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Next"/>
-    </LinearLayout>
+            android:text="Next"
+            android:onClick="NextClicked"
+            />
+         </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 
 
