@@ -1,0 +1,21 @@
+var express = require('express');
+var bodyParser = require('body-parser')
+var path = require('path');
+var app=express();
+var port = 3000;
+
+app.use(express.static(path.join(__dirname, "./")));
+app.use(bodyParser.urlencoded({extended: true}));
+
+app.listen(port);
+app.get('/', function (req, res) {
+    
+        //console.log(req);
+   res.sendFile(__dirname + '/test.html');
+    })
+app.post('/post',function(req,res){
+    var inputData;
+
+    console.log(req.body);
+    res.send("hello");
+})
