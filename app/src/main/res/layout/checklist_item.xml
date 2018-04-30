@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<companydomain.nctmanage.CheckableLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CheckableLinearLayout="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants">
+
+
+    <TextView
+        android:id="@+id/check_id"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:text="1" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="25dp"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        />
+    <TextView
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_item"
+        android:text="iiiiiiiiiiiiitttttttttteeeeeeemmmmmmmm"
+        android:padding="5dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/check_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nnnnnnnnnnnnnnnnaaaaaaaaaaaaaaaaaaaaaammmmmmmmmmmmmmmmmmmmeeeeeeeeeeeeeeee"
+        android:padding="5dp"
+        android:textStyle="bold" />
+
+</companydomain.nctmanage.CheckableLinearLayout>

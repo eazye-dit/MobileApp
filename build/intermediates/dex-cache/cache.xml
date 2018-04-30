@@ -7,8 +7,89 @@
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="532858ef5bc850dae64107fcae8c8d019a64aad5">
+        sha1="df5d0b95d001e8075bfd43c82c9bcee558cc288f">
         <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_878e06849729eb82669669ccdc40db5ef032bdbd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\32ec0ec83d81fdf1eec225253c24f53826e6ff20\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_a20814664e91ac954d2f136d065633344644b7a6\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\26.0.0-alpha1\support-annotations-26.0.0-alpha1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="023ee503b631f69511e335a061ea008f8da60f40">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-26.0.0-alpha1_efe400985994bb7a89b04ec7c22f01491e852699\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\07456e3c436c26da16f5b58d5c6a7e678b2ce7a1\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_4c1c7352c21490f308f18dc2cc2c673a25347c96\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\1168848a0857f71f642fac34bcd664be96a59425\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="18d31838aa4fcc768a8a0516e22cc13b94655d89">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_696a564765bf2608e7afdf6632491d5cb88e1431\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\c2c0b3b319f63269cd991527c67e95dbb1add0f8\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8df0e365e40beb151bc42dee20817721a6cab7b0">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_b5a9fae074517c693fba52312562611320d8f308\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\AppData\Local\Android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.2\constraint-layout-solver-1.0.2.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\constraint-layout-solver-1.0.2_574ba1296762417d96b585012a36e457f32e33d2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\56cb51cfa3cf385bc6a58e08024720d2f5ca2e5e\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="952944218ecedea1554a513dec0c14d570642843">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_8d207676dab59903e0ae953df45d2b93c212258c\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\1777586a2e2e04109fb616b9e0dbefe1e7c6ea1d\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="88246166d5afb106f532f6e6deae683c66b42c89">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_98c10797cfa21b446c4d7daf0a1be64270d06402\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\c01d819c42ef50e9517281aa64d49b1d05d26b95\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47471eb19df288158b00b8d9cfa41bce7373f5cc">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_72ccc88ee76cba21735131cc8eb6825a62455eb5\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -18,6 +99,33 @@
         revision="26.0.1"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_0efef40ed59aca65b9540bf6c3451e503ed86f60\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\cc0c876a56657c7d63280203ebf1236cd2f85a5f\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2e92aa0163544a804a0b34f169ca61801770839a">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_35e9e7adad3c73cde07a89454ba8bffc6fddf317\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\540331f927de95c1be8f7a2689cd3b16b3a76feb\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="9935891f23923f39d002087085d9696568a9f657">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_5249253f0157cf6fb99ba01f7c58ce9e4a2b63df\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\YUJIN\.android\build-cache\160bb8c7dc97e5e27f60e8f3bbb6c42b79b08b5a\output\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="fcd01fd11233459f546c437ec927e9b61bf7caf1">
+        <dex dex="C:\Users\YUJIN\AndroidStudioProjects\NCTmanage\app\build\intermediates\transforms\dex\debug\folders\1000\10\classes_884f88bfb1d5780ad2bb4b0c93ae7bf11df0cd01\classes.dex" />
     </item>
 
 </items>

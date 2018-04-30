@@ -1,4 +1,3 @@
-
 package companydomain.nctmanage;
 
 import android.content.Intent;
@@ -10,20 +9,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.CookieHandler;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
-import static android.util.Log.i;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,12 +25,17 @@ public class MainActivity extends AppCompatActivity {
     //EditText idText = (EditText) findViewById(R.id.idText);
     //EditText passwordText = (EditText) findViewById(R.id.passwordText);
     public String message;
+
     public static String id;
     public static String password;
     EditText EditTextid;
     EditText EditTextpassword;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        java.net.CookieManager cookieManager = new java.net.CookieManager();
+        CookieHandler.setDefault(cookieManager);
 
         Intent toSplash = new Intent(this,SplashActivity.class);
         startActivity(toSplash);
@@ -57,15 +56,15 @@ public class MainActivity extends AppCompatActivity {
         id = EditTextid.getText().toString();
         password = EditTextpassword.getText().toString();
 
-        i("id",id);
+        //i("username",id);
 
-        new SendServer().execute("http://192.168.43.52:3000/getState");//AsyncTask start
+        new SendServer().execute("https://dev.cute.enterprises/api/login/");//AsyncTask start
         //https://dev.cute.enterprises/api/login/
         //Log.i("message",message);
         //this message comes first, Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show(); //value from server "successful / invalid"
 
 
-        }
+    }
 
 
 
@@ -77,12 +76,12 @@ public class MainActivity extends AppCompatActivity {
 
             try {
                 //making JSONObject and save key value
-                i("id2",id);
-               // Toast.makeText(getApplicationContext(),id+" "+password, Toast.LENGTH_SHORT).show();
-                JSONObject jsonObject = new JSONObject();
-                jsonObject.accumulate("id", id);
-                jsonObject.accumulate("password",password);
-                //String body = "username="+id+"&"+"password="+password;
+                //i("id2",id);
+                // Toast.makeText(getApplicationContext(),id+" "+password, Toast.LENGTH_SHORT).show();
+                //JSONObject jsonObject = new JSONObject();
+                //jsonObject.accumulate("username", id);
+                //jsonObject.accumulate("password",password);
+                String body = "username="+id+"&"+"password="+password;
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
 
@@ -96,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
                     con = (HttpURLConnection) url.openConnection();
                     con.setRequestMethod("POST");//Using post method
-                   //con.setRequestProperty("Cache-Control", "no-cache");//cache setting
+                    //con.setRequestProperty("Cache-Control", "no-cache");//cache setting
                     //con.setRequestProperty("Content-Type", "application/json");//send "application JSON form"
                     //con.setRequestProperty("Accept", "text/html");//responseof server, get data by html
                     con.setDoOutput(true);//Outstream, post data send
@@ -112,25 +111,14 @@ public class MainActivity extends AppCompatActivity {
 
                     //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
 
-                    writer.write(jsonObject.toString());
-                    //writer.write(body);
+                    //writer.write(jsonObject.toString());
+                    writer.write(body);
                     writer.flush();
                     writer.close();//get buffer
 
                     //get data from server
 
-                    InputStream stream = con.getInputStream();
-                    reader = new BufferedReader(new InputStreamReader(stream));
-                    StringBuffer buffer = new StringBuffer();
-                    String line = "";
-
-                    while((line = reader.readLine()) != null){
-
-                        buffer.append(line);
-
-                    }
-
-                    return buffer.toString();//return value from server.
+                    return String.valueOf(con.getResponseCode());
 
                 } catch (MalformedURLException e){
 
@@ -161,21 +149,21 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return null;
+            return "false";
 
         }
 
         @Override
         protected void onPostExecute(String result) {
-
             super.onPostExecute(result);
-            if(result.equals("success")){
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+
+            if(result.equals("200")) {
+                Toast.makeText(getApplicationContext(), "Welcome! Have a nice day! :)" , Toast.LENGTH_SHORT).show();
                 Intent toList = new Intent(MainActivity.this, ListActivity.class);
                 startActivity(toList);
             }
             else {
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Incorrect ID or Password", Toast.LENGTH_SHORT).show();
                 EditTextid.setText("");
                 EditTextpassword.setText("");
             }
@@ -186,5 +174,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-
-

@@ -1,102 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginLeft="30dp"
     android:layout_marginRight="30dp"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="20dp"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical">
 
 
     <TextView
-        android:id="@+id/TestTitle"
+        android:id="@+id/test_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
         android:text="SERVICE BRAKE PEDAL"
+        android:textColor="@color/colorAccent"
         android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="40dp"/>
+        android:textStyle="bold" />
 
     <ScrollView
+        android:id="@+id/check_scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="- Method of Testing"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/Method"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:text="1. Check the anti-slip provisions on the pedal pad.\n2. Examine the condition of the pedal.\n3. Check the fixing of the pedal pad to the pedal and the fixing of the pedal to the operating lever.\n
-4. Move the pedal from side to side and examine the condition of the pedal pivot bearing/bush.\n5. Depress the pedal to check for fouling on parts of the vehicle."
-        android:maxLines="3"/>
 
-    <Button
-        android:id="@+id/ReadMoreBtn1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="ReadMore1Clicked"
-        android:text="READ MORE" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&lt; Method of Testing &gt;"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/test_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="1. Check the anti-slip provisions on the pedal pad.\n2. Examine the condition of the pedal.\n3. Check the fixing of the pedal pad to the pedal and the fixing of the pedal to the operating lever.\n
+4. Move the pedal from side to side and examine the condition of the pedal pivot bearing/bush.\n5. Depress the pedal to check for fouling on parts of the vehicle." />
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="- Notes"
-        android:textSize="20dp"
-        android:textStyle="bold"/>
-    <TextView
-        android:id="@+id/Notes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:text="1. Before carrying out this inspection, check the road wheels.\n2. Brake pedals should not be rejected for not having a pedal rubber if they were not designed to have one."
-        android:maxLines="3"/>
-
-    <Button
-        android:id="@+id/ReadMoreBtn2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="ReadMore2Clicked"
-        android:text="READ MORE" />
+            <Button
+                android:id="@+id/ReadMoreBtn1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="ReadMore1Clicked"
+                android:text="READ MORE" />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="&lt; Notes &gt;"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Previous"
-            android:onClick="PreviousClicked"/>
-        !~have to add Previous1Clicked.
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Next"
-            android:onClick="NextClicked"
-            />
-         </LinearLayout>
+            <TextView
+                android:id="@+id/test_notes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="1. Before carrying out this inspection, check the road wheels.\n2. Brake pedals should not be rejected for not having a pedal rubber if they were not designed to have one." />
+
+            <Button
+                android:id="@+id/ReadMoreBtn2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:onClick="ReadMore2Clicked"
+                android:text="READ MORE" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="10dp"
+                android:text="&lt; Reasons of Failure &gt;"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+
+                <ListView
+                    android:id="@+id/check_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="1000dp"
+                    android:choiceMode="multipleChoice">
+
+                </ListView>
+
+            <!--
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service Brake Pedal \nAnti-Slip Provision" />
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1. Missing, loose or worn to the extent that it is no longer effective."/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service Brake Pedal\n Mounting"
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2. Insecure, badly corroded or worn to the extent that
+the pedal can be moved from side to side."/>
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3. Excessive wear in brake pedal mounting bush."/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service Brake Pedal\n Travel"/>
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4. Pedal travel is obstructed.\n"/>
+            </LinearLayout>
+            -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="&lt; Comments &gt;"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/test_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="2" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/color"
+                    android:onClick="PreviousClicked"
+                    android:text="Previous"
+                    android:textColor="#ffffff" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_margin="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/color"
+                    android:onClick="NextClicked"
+                    android:text="Next"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 
 
 </LinearLayout>

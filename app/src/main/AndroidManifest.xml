@@ -21,7 +21,6 @@
         <activity
             android:name=".SplashActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
-        <activity android:name=".CheckActivity2" />
         <activity android:name=".EndActivity"></activity>
     </application>
 
