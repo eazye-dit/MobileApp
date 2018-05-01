@@ -59,9 +59,6 @@ public class MainActivity extends AppCompatActivity {
         //i("username",id);
 
         new SendServer().execute("https://dev.cute.enterprises/api/login/");//AsyncTask start
-        //https://dev.cute.enterprises/api/login/
-        //Log.i("message",message);
-        //this message comes first, Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show(); //value from server "successful / invalid"
 
 
     }
@@ -75,12 +72,6 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... urls) {
 
             try {
-                //making JSONObject and save key value
-                //i("id2",id);
-                // Toast.makeText(getApplicationContext(),id+" "+password, Toast.LENGTH_SHORT).show();
-                //JSONObject jsonObject = new JSONObject();
-                //jsonObject.accumulate("username", id);
-                //jsonObject.accumulate("password",password);
                 String body = "username="+id+"&"+"password="+password;
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
@@ -95,29 +86,20 @@ public class MainActivity extends AppCompatActivity {
 
                     con = (HttpURLConnection) url.openConnection();
                     con.setRequestMethod("POST");//Using post method
-                    //con.setRequestProperty("Cache-Control", "no-cache");//cache setting
-                    //con.setRequestProperty("Content-Type", "application/json");//send "application JSON form"
-                    //con.setRequestProperty("Accept", "text/html");//responseof server, get data by html
                     con.setDoOutput(true);//Outstream, post data send
                     con.setDoInput(true);//Inputstream, get response from server
                     con.connect();
 
                     //making stream for sending server
-
                     OutputStream outStream = con.getOutputStream();
 
                     //making buffer and put it
                     BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outStream));
 
-                    //Toast.makeText(getApplicationContext(), jsonObject.toString(), Toast.LENGTH_LONG).show();
-
                     //writer.write(jsonObject.toString());
-                    writer.write(body);
-                    writer.flush();
-                    writer.close();//get buffer
+                    writer.write(body); writer.flush(); writer.close();//get buffer
 
                     //get data from server
-
                     return String.valueOf(con.getResponseCode());
 
                 } catch (MalformedURLException e){

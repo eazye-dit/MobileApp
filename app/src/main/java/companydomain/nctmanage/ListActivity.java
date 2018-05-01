@@ -67,7 +67,7 @@ public class ListActivity extends AppCompatActivity {
         try {
             JSONObject jsonObj = new JSONObject(myJSON);
 
-            //Toast.makeText(ListActivity.this ,jsonObj.toString(),Toast.LENGTH_LONG).show();
+            Log.i("제이슨오브젝트",jsonObj.toString());
 
             peoples = jsonObj.getJSONArray(TAG_RESULTS);
             for (int i = 0; i < peoples.length(); i++) {

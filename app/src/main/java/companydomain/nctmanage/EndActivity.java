@@ -12,6 +12,7 @@ import java.util.Arrays;
 public class EndActivity extends AppCompatActivity {
 
     TextView textView_information;
+    TextView textView_checkResult;
     TextView app;
     TextView reg;
     TextView date;
@@ -26,12 +27,16 @@ public class EndActivity extends AppCompatActivity {
 
         Intent toEnd = getIntent();
         String[] information = toEnd.getStringArrayExtra("information");
+        String checkResult = toEnd.getStringExtra("checkResult");
         String app_id = toEnd.getStringExtra("app_id");
         String reg_num = toEnd.getStringExtra("reg_num");
         String due_date = toEnd.getStringExtra("due_date");
 
         textView_information = (TextView)findViewById(R.id.end_information);
         textView_information.setText(Arrays.toString(information));
+
+        textView_checkResult = (TextView)findViewById(R.id.end_checkResult);
+        textView_checkResult.setText(checkResult);
 
         app = (TextView) findViewById(R.id.end_appid);
         app.setText(app_id);
@@ -46,5 +51,6 @@ public class EndActivity extends AppCompatActivity {
     public void ButtonList(View v){
         Intent toList = new Intent (EndActivity.this, ListActivity.class);
         startActivity(toList);
+
     }
 }

@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -39,19 +40,21 @@ import static companydomain.nctmanage.R.id.test_comments;
 public class CheckActivity extends AppCompatActivity {
 
     int stepIndex = 0;
-    String checkResult;
 
     String myJSON;
 
     String[] information;
+    //String[] checkResult;
 
     TextView testTitle;
     TextView testDescription;
     TextView testNotes;
 
+    Button button1;
+    Button button2;
+
     EditText comments;
-    TextView checkId;
-    String checkResult = null;
+    String checkResult = "";
 
     ScrollView checkScroll;
 
@@ -118,15 +121,12 @@ public class CheckActivity extends AppCompatActivity {
     protected void showList() {
         try {
             personList.clear();
-            //steps array 받아오기
+            //get steps array
             JSONObject jsonObj = new JSONObject(myJSON);
             peoples = jsonObj.getJSONArray(TAG_RESULTS);
-            Log.i("피플스",peoples.toString());
-            //failure array 받아오기
-            JSONObject data = peoples.getJSONObject(stepIndex); //0은 페이지 넘어갈 때마다 index로 바뀌게 될 것.
+            //get failure array
+            JSONObject data = peoples.getJSONObject(stepIndex);
             JSONArray fail = data.getJSONArray("failures");
-             Log.i("퓨진이",String.valueOf(stepIndex));
-             Log.i("퓨진이2",String.valueOf(fail));
 
             String testId = data.getString(TAG_TESTID); //didn't use
             String description = data.getString(TAG_DESCRIPTION);
@@ -146,8 +146,6 @@ public class CheckActivity extends AppCompatActivity {
             {
                 JSONObject c = fail.getJSONObject(i);
 
-                //JSONObject failure = c.getJSONObject(TAG_FAILURE);
-                //Toast.makeText(CheckActivity.this ,failure.toString(),Toast.LENGTH_LONG).show();
                 String id = c.getString(TAG_FAILID);
                 String item = c.getString(TAG_ITEM);
                 String name = c.getString(TAG_NAME);
@@ -161,14 +159,6 @@ public class CheckActivity extends AppCompatActivity {
                 personList.add(persons);
 
             }
-            Log.i("personList",personList.toString());
-            /*
-            final ListAdapter adapter = new CustomChoiceListViewAdapter(
-                    CheckActivity.this, personList, R.layout.checklist_item,
-                    new String[]{TAG_FAILID, TAG_ITEM, TAG_NAME,},
-                    new int[]{R.id.check_id, R.id.check_item, R.id.check_name,}
-            );
-            */
 
             final ListAdapter adapter = new SimpleAdapter(
                     CheckActivity.this, personList, R.layout.checklist_item,
@@ -186,7 +176,7 @@ public class CheckActivity extends AppCompatActivity {
                     //parsing for getting id value for CheckActivity
                     //String result = personList.get(position).toString();
 
-                    checkResult += str;
+                    checkResult += " "+str;
 
                     Toast.makeText(CheckActivity.this ,"this is : "+str, Toast.LENGTH_SHORT).show();
                     //Toast.makeText(CheckActivity.this ,personList.get(position).toString(), Toast.LENGTH_SHORT).show();
@@ -254,8 +244,7 @@ public class CheckActivity extends AppCompatActivity {
         //information = new String[10];
         information[stepIndex] = "";
         information[stepIndex] += testTitle.getText() + " : " + commentResult+"\n";
-        Log.i("오유진",String.valueOf(stepIndex));
-        Log.i("오유진2",information[stepIndex]);
+
         stepIndex++;
 
         testDescription = (TextView) findViewById(R.id.test_description);
@@ -280,6 +269,7 @@ public class CheckActivity extends AppCompatActivity {
             toEnd.putExtra("reg_num", registrationValue);
             toEnd.putExtra("due_date", dateValue);
             toEnd.putExtra("information", information);
+            toEnd.putExtra("checkResult", checkResult);
             startActivity(toEnd);
         }
     }
@@ -295,9 +285,6 @@ public class CheckActivity extends AppCompatActivity {
             startActivity(toList);
         }
         information[stepIndex] = "";
-
-        Log.i("-오유진",String.valueOf(stepIndex));
-        Log.i("-오유진2",information[stepIndex]);
 
         testDescription = (TextView) findViewById(R.id.test_description);
         testDescription.setMaxLines(3);
@@ -320,30 +307,39 @@ public class CheckActivity extends AppCompatActivity {
     public void ReadMore1Clicked(View v) {
 
         testDescription = (TextView) findViewById(R.id.test_description);
+        button1 = (Button) findViewById(R.id.ReadMoreBtn1);
         int line = testDescription.getMaxLines();
-        if(line==3)
-            testDescription.setMaxLines(100);
-        else
+        if(line==3){
+            button1.setText("READ MORE");
+            testDescription.setMaxLines(100);}
+        else{
+            button1.setText("READ LESS");
             testDescription.setMaxLines(3);
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void ReadMore2Clicked(View v) {
 
         testNotes = (TextView) findViewById(R.id.test_notes);
+        button2 = (Button) findViewById(R.id.ReadMoreBtn2);
         int line2 = testNotes.getMaxLines();
-        if(line2==3)
+        if(line2==3) {
+            button2.setText("READ LESS");
             testNotes.setMaxLines(100);
-        else
+        }
+        else {
+            button2.setText("READ MORE");
             testNotes.setMaxLines(3);
+        }
 
     }
-
+/*
        public void checkClicked(View v) {
         checkId = (TextView) findViewById(R.id.check_id);
         checkResult = checkId.getText().toString();
            Log.i("체크박스",checkResult);
 
     }
-
+*/
 }
