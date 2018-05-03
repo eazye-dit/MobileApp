@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,11 +31,10 @@ import static companydomain.nctmanage.R.id.car_listView;
 public class ListActivity extends AppCompatActivity {
 
     String myJSON;
+    String id;
 
-    /*private static final String TAG_RESULTS = "result";
-    private static final String TAG_REGNUM = "regnum";
-    private static final String TAG_DUEDATE = "duedate";
-    private static final String TAG_TESTED = "tested";*/
+    TextView welcome;
+
     private static final String TAG_ID = "id";
     private static final String TAG_RESULTS = "appointments";
     private static final String TAG_VEHICLE = "vehicle";
@@ -55,6 +55,13 @@ public class ListActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
+
+        Intent toCheck = getIntent();
+
+        id = toCheck.getStringExtra("id");
+
+        welcome = (TextView)findViewById(R.id.welcome);
+        welcome.setText("Welcome, "+id+" :)");
 
         list = (ListView) findViewById(car_listView);
         personList = new ArrayList<HashMap<String, String>>();
@@ -130,11 +137,11 @@ public class ListActivity extends AppCompatActivity {
                     String result3 = spliting2[1];
                     //String spliting3[] = result3.split("\\}");
 
-                    //Toast.makeText(ListActivity.this ,"Registration ID = " + spliting3[0], Toast.LENGTH_LONG).show();
-
-                    toCheck.putExtra("appointmentId",result3);
-                    toCheck.putExtra("date",dateResult2[1]);
-                    toCheck.putExtra("registration",reg3);
+                    //toCheck.putExtra("idValue",result3);
+                    CollectFailure.instance.SetAppointmentId(result3);
+                    toCheck.putExtra("stepIndex",0);
+                    //toCheck.putExtra("date",dateResult2[1]);
+                    //toCheck.putExtra("registration",reg3);
                     startActivity(toCheck);
                 }
             });

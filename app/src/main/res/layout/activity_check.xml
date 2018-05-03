@@ -82,103 +82,11 @@
                 android:onClick="ReadMore2Clicked"
                 android:text="READ MORE" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="20dp"
-                android:paddingBottom="10dp"
-                android:text="&lt; Reasons of Failure &gt;"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-                <ListView
-                    android:id="@+id/check_listview"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:choiceMode="multipleChoice">
-
-                </ListView>
-
-            <!--
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service Brake Pedal \nAnti-Slip Provision" />
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="1. Missing, loose or worn to the extent that it is no longer effective."/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="20dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service Brake Pedal\n Mounting"
-                    />
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="2. Insecure, badly corroded or worn to the extent that
-the pedal can be moved from side to side."/>
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3. Excessive wear in brake pedal mounting bush."/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service Brake Pedal\n Travel"/>
-                <CheckBox
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="4. Pedal travel is obstructed.\n"/>
-            </LinearLayout>
-            -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="&lt; Comments &gt;"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/test_comments"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:maxLines="2" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="50dp"
                 android:orientation="horizontal">
 
                 <Button

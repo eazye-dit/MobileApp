@@ -140,8 +140,9 @@ public class MainActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             if(result.equals("200")) {
-                Toast.makeText(getApplicationContext(), "Welcome! Have a nice day! :)" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Log in successful!" , Toast.LENGTH_SHORT).show();
                 Intent toList = new Intent(MainActivity.this, ListActivity.class);
+                toList.putExtra("id",id);
                 startActivity(toList);
             }
             else {
@@ -154,5 +155,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }

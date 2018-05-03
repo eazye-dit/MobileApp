@@ -9,13 +9,10 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.ScrollView;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,15 +28,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static companydomain.nctmanage.R.id.check_listview;
-import static companydomain.nctmanage.R.id.test_comments;
 
 /**
  * Created by YUJIN on 2018-03-22.
  */
 
 public class CheckActivity extends AppCompatActivity {
-
-    int stepIndex = 0;
 
     String myJSON;
 
@@ -70,9 +64,12 @@ public class CheckActivity extends AppCompatActivity {
     private static final String TAG_ITEM = "item";
     private static final String TAG_NAME = "name";
 
-    String idValue;
-    String dateValue;
-    String registrationValue;
+    int stepIndex;
+    String appointmentId;
+
+    //String idValue;
+    //String dateValue;
+    //String registrationValue;
 
     JSONArray peoples = null;
     JSONArray failure = null;
@@ -88,33 +85,28 @@ public class CheckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check);
 
-        //CustomChoiceListViewAdapter adapter;
-
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
 
-        list = (ListView) findViewById(check_listview);
-        information = new String[3];
-        personList = new ArrayList<HashMap<String, String>>();
-        //getData("http://192.168.43.135/getcarlist.php"); //수정 필요
-        //getData("https://dev.cute.enterprises/api/mechanic/test/<id>/");
+        testDescription = (TextView) findViewById(R.id.test_description);
+        testDescription.setMaxLines(3);
 
+        testNotes = (TextView) findViewById(R.id.test_notes);
+        testNotes.setMaxLines(3);
+
+        list = (ListView) findViewById(check_listview);
+
+        personList = new ArrayList<HashMap<String, String>>();
         Intent toCheck = getIntent();
 
-        idValue = toCheck.getStringExtra("appointmentId");
-        registrationValue=toCheck.getStringExtra("registration");
-        dateValue=toCheck.getStringExtra("date");
+        appointmentId = CollectFailure.instance.GetStringAppointmentId();
+        stepIndex = toCheck.getIntExtra("stepIndex",0);
+        //registrationValue=toCheck.getStringExtra("registration");
+        //dateValue=toCheck.getStringExtra("date");
 
-        //Toast.makeText(getApplicationContext(), "ID : "+ idValue +"& registration" + registrationValue + "& date"+dateValue , Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), "test : "+ test , Toast.LENGTH_SHORT).show();
-        //Toast.makeText(getApplicationContext(), "commentResult : " + commentResult + "& checkResult : " + checkResult, Toast.LENGTH_SHORT).show();
-
-        String url = "https://dev.cute.enterprises/api/mechanic/test/" + idValue + "/";
-        //Toast.makeText(getApplicationContext(), "url : "+ url, Toast.LENGTH_SHORT).show();
-
+        String url = "https://dev.cute.enterprises/api/mechanic/test/" + appointmentId + "/";
         getData(url);
 
-        //new SendServer().execute("https://dev.cute.enterprises/api/login/");
 
     }
 
@@ -124,9 +116,8 @@ public class CheckActivity extends AppCompatActivity {
             //get steps array
             JSONObject jsonObj = new JSONObject(myJSON);
             peoples = jsonObj.getJSONArray(TAG_RESULTS);
-            //get failure array
+
             JSONObject data = peoples.getJSONObject(stepIndex);
-            JSONArray fail = data.getJSONArray("failures");
 
             String testId = data.getString(TAG_TESTID); //didn't use
             String description = data.getString(TAG_DESCRIPTION);
@@ -142,48 +133,6 @@ public class CheckActivity extends AppCompatActivity {
             testNotes = (TextView) findViewById(R.id.test_notes);
             testNotes.setText(notes);
 
-            for (int i = 0; i < fail.length(); i++)
-            {
-                JSONObject c = fail.getJSONObject(i);
-
-                String id = c.getString(TAG_FAILID);
-                String item = c.getString(TAG_ITEM);
-                String name = c.getString(TAG_NAME);
-
-                HashMap<String, String> persons = new HashMap<String, String>();
-
-                persons.put(TAG_FAILID, id);
-                persons.put(TAG_ITEM, item);
-                persons.put(TAG_NAME, name);
-
-                personList.add(persons);
-
-            }
-
-            final ListAdapter adapter = new SimpleAdapter(
-                    CheckActivity.this, personList, R.layout.checklist_item,
-                    new String[]{TAG_FAILID, TAG_ITEM, TAG_NAME,},
-                    new int[]{R.id.check_id, R.id.check_item, R.id.check_name,}
-            );
-
-            list.setAdapter(adapter);
-
-           list.setOnItemClickListener(new AdapterView.OnItemClickListener()
-            {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                    String str = personList.get(position).get(TAG_FAILID);
-                    //parsing for getting id value for CheckActivity
-                    //String result = personList.get(position).toString();
-
-                    checkResult += " "+str;
-
-                    Toast.makeText(CheckActivity.this ,"this is : "+str, Toast.LENGTH_SHORT).show();
-                    //Toast.makeText(CheckActivity.this ,personList.get(position).toString(), Toast.LENGTH_SHORT).show();
-
-
-                }
-            });
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -234,72 +183,52 @@ public class CheckActivity extends AppCompatActivity {
 
 
 
-    public void NextClicked(View v)//모든 값을 server에 넘겨주고, intent를 통해 다음 activity 를 연다.
+    public void NextClicked(View v)//next누르면 checkactivity2로 넘어간다.
     {
-        comments = (EditText) findViewById(test_comments);
-        String commentResult = comments.getText().toString(); //checkResult결과와 함께 server로 보내기
+        Log.i("테스트N1",String.valueOf(stepIndex));
+       Intent toCheck2 =  new Intent(CheckActivity.this, CheckActivity2.class);
+        toCheck2.putExtra("stepIndex",stepIndex);
+        startActivity(toCheck2);
 
-        comments.setText("");
-
-        //information = new String[10];
-        information[stepIndex] = "";
-        information[stepIndex] += testTitle.getText() + " : " + commentResult+"\n";
-
-        stepIndex++;
-
-        testDescription = (TextView) findViewById(R.id.test_description);
-        testDescription.setMaxLines(3);
-
-        testNotes = (TextView) findViewById(R.id.test_notes);
-        testNotes.setMaxLines(3);
-
-        String url = "https://dev.cute.enterprises/api/mechanic/test/" + idValue + "/";
-        getData(url);
-        checkScroll = (ScrollView) findViewById(R.id.check_scrollView);
+        //String url = "https://dev.cute.enterprises/api/mechanic/test/" + idValue + "/";
+        //getData(url);
+        /*checkScroll = (ScrollView) findViewById(R.id.check_scrollView);
         checkScroll.post(new Runnable() {
             public void run() {
                 checkScroll.scrollTo(0, 0);
             }
-        });
+        });*/
 
         if (stepIndex > 2) {
             Intent toEnd = new Intent(CheckActivity.this, EndActivity.class);
 
-            toEnd.putExtra("app_id", idValue);
-            toEnd.putExtra("reg_num", registrationValue);
-            toEnd.putExtra("due_date", dateValue);
-            toEnd.putExtra("information", information);
-            toEnd.putExtra("checkResult", checkResult);
+            //toEnd.putExtra("app_id", idValue);
+            //toEnd.putExtra("reg_num", registrationValue);
+            //toEnd.putExtra("due_date", dateValue);
+            //toEnd.putExtra("information", information);
+            //toEnd.putExtra("checkResult", checkResult);
             startActivity(toEnd);
         }
     }
 
     public void PreviousClicked(View v) {
 
-        stepIndex--;
-        Log.i("테스트",String.valueOf(stepIndex));
-        if(stepIndex<0){
+        Log.i("테스트P1",String.valueOf(stepIndex));
+        if(stepIndex==0){
             Toast.makeText(CheckActivity.this, "Go back to appointment list", Toast.LENGTH_SHORT).show();
-            stepIndex++;
             Intent toList = new Intent(CheckActivity.this, ListActivity.class);
+            CollectFailure.instance.SetInit();
             startActivity(toList);
         }
-        information[stepIndex] = "";
-
-        testDescription = (TextView) findViewById(R.id.test_description);
-        testDescription.setMaxLines(3);
-
-        testNotes = (TextView) findViewById(R.id.test_notes);
-        testNotes.setMaxLines(3);
-
-        String url = "https://dev.cute.enterprises/api/mechanic/test/" + idValue + "/";
-        getData(url);
-        checkScroll = (ScrollView) findViewById(R.id.check_scrollView);
-        checkScroll.post(new Runnable() {
-            public void run() {
-                checkScroll.scrollTo(0, 0);
-            }
-        });
+        else
+        {
+            stepIndex--;
+            Intent toCheck2 = new Intent(CheckActivity.this, CheckActivity2.class);
+            toCheck2.putExtra("stepIndex", stepIndex);
+            CollectFailure.instance.ClickPrev();
+            Toast.makeText(CheckActivity.this, CollectFailure.instance.GetJSonFailureIds().toString(), Toast.LENGTH_LONG).show();
+            startActivity(toCheck2);
+        }
 
     }
 
@@ -309,11 +238,12 @@ public class CheckActivity extends AppCompatActivity {
         testDescription = (TextView) findViewById(R.id.test_description);
         button1 = (Button) findViewById(R.id.ReadMoreBtn1);
         int line = testDescription.getMaxLines();
+
         if(line==3){
-            button1.setText("READ MORE");
+            button1.setText("READ LESS");
             testDescription.setMaxLines(100);}
         else{
-            button1.setText("READ LESS");
+            button1.setText("READ MORE");
             testDescription.setMaxLines(3);
         }
     }
@@ -334,12 +264,5 @@ public class CheckActivity extends AppCompatActivity {
         }
 
     }
-/*
-       public void checkClicked(View v) {
-        checkId = (TextView) findViewById(R.id.check_id);
-        checkResult = checkId.getText().toString();
-           Log.i("체크박스",checkResult);
 
-    }
-*/
 }
