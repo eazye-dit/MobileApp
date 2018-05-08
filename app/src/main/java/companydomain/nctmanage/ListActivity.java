@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +32,7 @@ public class ListActivity extends AppCompatActivity {
     String myJSON;
     String id;
 
-    TextView welcome;
+    //TextView welcome;
 
     private static final String TAG_ID = "id";
     private static final String TAG_RESULTS = "appointments";
@@ -55,13 +54,13 @@ public class ListActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
-
+/*
         Intent toCheck = getIntent();
-
         id = toCheck.getStringExtra("id");
 
         welcome = (TextView)findViewById(R.id.welcome);
         welcome.setText("Welcome, "+id+" :)");
+        */
 
         list = (ListView) findViewById(car_listView);
         personList = new ArrayList<HashMap<String, String>>();

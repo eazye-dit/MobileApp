@@ -22,6 +22,7 @@ import java.net.URL;
 public class EndActivity extends AppCompatActivity {
 
     String result;
+    String showResult;
     String appointmentId;
     TextView textView_result;
 
@@ -34,10 +35,15 @@ public class EndActivity extends AppCompatActivity {
         getSupportActionBar().setCustomView(R.layout.actionbar_layout);
 
         result = CollectFailure.instance.GetJSonFailureIds();
+        showResult = CollectFailure.instance.showResult();
 
-        textView_result = (TextView)findViewById(R.id.end_result);
-        textView_result.setText(result);
+        textView_result = (TextView)findViewById(R.id.end_info);
+        textView_result.setText(showResult);
+
         appointmentId = CollectFailure.instance.GetStringAppointmentId();
+
+        TextView textView_appid = (TextView)findViewById(R.id.end_appid);
+        textView_appid.setText(appointmentId);
 
         String url = "https://dev.cute.enterprises/api/mechanic/test/" + appointmentId + "/";
 
@@ -63,7 +69,7 @@ public class EndActivity extends AppCompatActivity {
                 String body = result;
                 HttpURLConnection con = null;
                 BufferedReader reader = null;
-                Log.i("바디",result);
+                //Log.i("바디",result);
 
                 try{
 

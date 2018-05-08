@@ -9,18 +9,28 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical">
 
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="40dp">
+    <TextView
+        android:id="@+id/test_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textSize="25dp"
+        android:layout_weight="1"
+        android:textStyle="bold" />
     <TextView
         android:id="@+id/test_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="40dp"
-        android:text="SERVICE BRAKE PEDAL"
+        android:layout_weight="1"
         android:textColor="@color/colorAccent"
         android:textSize="25dp"
         android:textStyle="bold" />
-
+</LinearLayout>
     <ScrollView
         android:id="@+id/check_scrollView"
         android:layout_width="match_parent"
@@ -44,9 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:maxLines="3"
-                android:text="1. Check the anti-slip provisions on the pedal pad.\n2. Examine the condition of the pedal.\n3. Check the fixing of the pedal pad to the pedal and the fixing of the pedal to the operating lever.\n
-4. Move the pedal from side to side and examine the condition of the pedal pivot bearing/bush.\n5. Depress the pedal to check for fouling on parts of the vehicle." />
+                android:maxLines="3"/>
 
             <Button
                 android:id="@+id/ReadMoreBtn1"
@@ -72,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
                 android:maxLines="3"
-                android:text="1. Before carrying out this inspection, check the road wheels.\n2. Brake pedals should not be rejected for not having a pedal rubber if they were not designed to have one." />
+                ></TextView>
 
             <Button
                 android:id="@+id/ReadMoreBtn2"

@@ -13,6 +13,7 @@ public class CollectFailure {
     ArrayList<Integer> CollectBiggestIndex;//4 // 10// 16//21
     ArrayList<Integer> TestIds;
     ArrayList<String> Comments;
+
     public static CollectFailure instance = new CollectFailure();
 
     public CollectFailure(){
@@ -140,7 +141,6 @@ public class CollectFailure {
     }
     public String GetJSonFailureIds()
     {
-        //String ret="{\"test\":[\"appointmentid\":"+appointmentid;
         String ret="{\"test\":{\"id\":"+appointmentid;
         ret += ",\"results\":[";
         for(int i=0;i<TestIds.size();i++)
@@ -176,5 +176,42 @@ public class CollectFailure {
 
         ret +="]}}";
         return ret;
+    }
+
+    public String showResult(){
+        String result = "TEST ID: ";
+        for(int i=0;i<TestIds.size();i++)
+        {
+            result += TestIds.get(i)+"\n";
+            result += "CHECKED: ";
+            int j;
+            if(i==0)
+            {
+                j=0;
+            }
+            else
+            {
+                j=CollectBiggestIndex.get(i-1)+1;
+            }
+            while(FailureIds.size()>0)
+            {
+                result +=FailureIds.get(j++);
+
+                if(j>CollectBiggestIndex.get(i))
+                {
+                    break;
+                }
+                result +=",";
+            }
+            result += "\n"+"COMMENT: "+Comments.get(i);
+
+            if(i+1<TestIds.size())
+            {
+                result += "\n\n"+"TEST ID: ";
+            }
+        }
+
+        return result;
+
     }
 }

@@ -40,6 +40,7 @@ public class CheckActivity extends AppCompatActivity {
     String[] information;
     //String[] checkResult;
 
+    TextView test_Id;
     TextView testTitle;
     TextView testDescription;
     TextView testNotes;
@@ -123,6 +124,9 @@ public class CheckActivity extends AppCompatActivity {
             String description = data.getString(TAG_DESCRIPTION);
             String notes = data.getString(TAG_NOTES);
             String testName = data.getString("name");
+
+            test_Id = (TextView)findViewById(R.id.test_id);
+            test_Id.setText(testId+". ");
 
             testTitle = (TextView) findViewById(R.id.test_title);
             testTitle.setText(testName);

@@ -32,13 +32,15 @@ import static companydomain.nctmanage.R.id.check_listview;
 public class CheckActivity2 extends AppCompatActivity {
 
     int stepIndex;
+    int steps=2;
     String myJSON;
 
+    TextView test_Id2;
     TextView testTitle2;
 
     EditText comment;
     String commentResult;
-    ScrollView checkScroll;
+    ScrollView Scroll;
 
     private int index = 1; //service brake pedal , ...
 
@@ -76,6 +78,7 @@ public class CheckActivity2 extends AppCompatActivity {
         appointmentId = CollectFailure.instance.GetStringAppointmentId();
         stepIndex = toCheck.getIntExtra("stepIndex",0);
 
+        //getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         String url = "https://dev.cute.enterprises/api/mechanic/test/" + appointmentId + "/";
 
         getData(url);
@@ -98,6 +101,11 @@ public class CheckActivity2 extends AppCompatActivity {
             JSONArray fail = data.getJSONArray("failures");
 
             String testName = data.getString("name");
+            String testId = data.getString("id");
+
+
+            test_Id2 = (TextView)findViewById(R.id.test_id2);
+            test_Id2.setText(testId+". ");
 
             testTitle2 = (TextView) findViewById(R.id.test_title2);
             testTitle2.setText(testName);
@@ -106,7 +114,6 @@ public class CheckActivity2 extends AppCompatActivity {
             for (int i = 0; i < fail.length(); i++)
             {
                 JSONObject c = fail.getJSONObject(i);
-
                 String id = c.getString(TAG_FAILID);
                 String item = c.getString(TAG_ITEM);
                 String name = c.getString(TAG_NAME);
@@ -139,7 +146,7 @@ public class CheckActivity2 extends AppCompatActivity {
 
                     CollectFailure.instance.ClickFailureId(str);
 
-                    Toast.makeText(CheckActivity2.this ,"this is : "+str, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(CheckActivity2.this ,"this is : "+str, Toast.LENGTH_SHORT).show();
                     //Toast.makeText(CheckActivity.this ,personList.get(position).toString(), Toast.LENGTH_SHORT).show();
 
 
@@ -209,7 +216,7 @@ public class CheckActivity2 extends AppCompatActivity {
         startActivity(toCheck);
 
     //끝난경우
-        if (stepIndex > 2) {
+        if (stepIndex > steps) {
             Intent toEnd = new Intent(CheckActivity2.this, EndActivity.class);
 
             startActivity(toEnd);
